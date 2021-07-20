@@ -11,10 +11,8 @@
     <th>İsim</th>
     <th>Soyad</th>
 </tr>
-{{veriler.map(v => `<tr><td>${v.ad}</td><td>${v.soyad}</td></tr>`).join("\n")}}
-
 {{#each veriler}}
-    <tr><td>{{this["ad"]}}</td><td>{{this["ad"]}}</td></tr><br>
+    <tr><td>{{this["ad"]}}</td><td>{{this["soyad"]}}</td></tr>
 {{/each}}
     </table>
 </body>
