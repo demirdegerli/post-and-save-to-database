@@ -21,6 +21,14 @@ app.get("/", (istek, yanit) => {
     yanit.sendFile(path.join(__dirname, '/index.html'))
 })
 
+app.get("/veriler", (istek, yanit) => {
+    var veri = {
+        veriler: db.get("veriler")
+    }
+    
+    yanit.render(path.join(__dirname, '/index.hbs'), veri)
+})
+
 app.post("/istek", (istek, yanit) => {
     console.log(istek.body.isim)
     console.log(istek.body.soyad)
