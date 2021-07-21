@@ -6,51 +6,37 @@ var app = express();
 const { JsonDatabase } = require("wio.db");
 
 const db = new JsonDatabase({
-  databasePath:"./veritabani.json"
+  databasePath:"./database.json"
 });
-
-/*
-{{veriler.map(v => `<tr><td>${v.ad}</td><td>${v.soyad}</td></tr>`).join("\n")}}
-*/
 
 app.use(express.urlencoded());
 
 app.set('view engine', 'hbs');
 
-app.get("/", (istek, yanit) => {
-    yanit.sendFile(path.join(__dirname, '/index.html'))
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '/index.html'))
 })
 
-app.get("/veriler", (istek, yanit) => {
-    var veri = {
-        veriler: db.get("veriler")
+app.get("/data", (req, res) => {
+    var data = {
+        datas: db.get("datas")
     }
     
-    yanit.render(path.join(__dirname, '/index.hbs'), veri)
+    res.render(path.join(__dirname, '/index.hbs'), data)
 })
 
-app.post("/istek", (istek, yanit) => {
-    console.log(istek.body.isim)
-    console.log(istek.body.soyad)
+app.post("/post", (req, res) => {
 
-    db.push("veriler", {
-        ad: istek.body.isim,
-        soyad: istek.body.soyad
+    db.push("datas", {
+        ad: req.body.name,
+        soyad: req.body.surname
     })
 
-var veri = {
-    veriler: db.get("veriler")
+var data = {
+    datas: db.get("datas")
 }
 
-yanit.render(path.join(__dirname, '/index.hbs'), veri)
-
-/*
-    yanit.send(`
-Yolladığınız veriler:
-İsim: ${istek.body.isim}
-Soyad: ${istek.body.soyad}    
-`)
-*/
+res.render(path.join(__dirname, '/index.hbs'), data)
 })
 
 app.listen(9999)
