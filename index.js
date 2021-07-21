@@ -9,6 +9,8 @@ const db = new JsonDatabase({
   databasePath:"./database.json"
 });
 
+if(!db.has("datas")) db.set("datas", [])
+
 app.use(express.urlencoded());
 
 app.set('view engine', 'hbs');
