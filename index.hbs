@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gönderdiğiniz Veriler</title>
+    <title>Your Data</title>
 
 <style>
 table, th, td {
@@ -16,11 +16,11 @@ table, th, td {
 <body>
     <table>
 <tr>
-    <th>İsim</th>
-    <th>Soyad</th>
+    <th>Name</th>
+    <th>Surname</th>
 </tr>
-{{#each veriler}}
-    <tr><td>{{this.[ad]}}</td><td>{{this.[soyad]}}</td></tr>
+{{#each datas}}
+    <tr><td>{{this.[name]}}</td><td>{{this.[surname]}}</td></tr>
 {{/each}}
     </table>
 </body>
