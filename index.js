@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.get("/data", (req, res) => {
     var data = {
-        datas: db.get("datas")
+        datas: (db.get("datas") || [])
     }
     
     res.render(path.join(__dirname, '/index.hbs'), data)
