@@ -3,13 +3,17 @@ const express = require("express");
 const hbs = require("express-hbs");
 var app = express();
 
-const { JsonDatabase } = require("wio.db");
+const { JsonDatabase } = require("demirdb");
 
-const db = new JsonDatabase({
-  databasePath:"./database.json"
+  const db = new Demirdb({
+  "dbName": "database",
+  "dbFolder": "/",
+  "language": "en",
+  "noBlankData": true,
+  "readable": false
 });
 
-if(!db.has("datas")) db.set("datas", [])
+if(!db.get("datas")) db.set("datas", [])
 
 app.use(express.urlencoded());
 
