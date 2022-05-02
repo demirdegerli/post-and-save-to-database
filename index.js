@@ -3,7 +3,7 @@ const express = require("express");
 const hbs = require("express-hbs");
 var app = express();
 
-const { JsonDatabase } = require("demirdb");
+const Demirdb = require("demirdb");
 
   const db = new Demirdb({
   "dbName": "database",
