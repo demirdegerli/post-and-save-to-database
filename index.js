@@ -7,13 +7,13 @@ const Demirdb = require("demirdb");
 
   const db = new Demirdb({
   "dbName": "database",
-  "dbFolder": "/",
+  "dbFolder": "db",
   "language": "en",
   "noBlankData": true,
   "readable": false
 });
 
-if(!db.get("datas")) db.set("datas", [])
+if(!db.has("datas")) db.set("datas", [])
 
 app.use(express.urlencoded());
 
