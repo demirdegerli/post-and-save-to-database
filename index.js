@@ -5,13 +5,7 @@ var app = express();
 
 const Demirdb = require("demirdb");
 
-  const db = new Demirdb({
-  "dbName": "database",
-  "dbFolder": "db",
-  "language": "en",
-  "noBlankData": true,
-  "readable": false
-});
+  const db = new Demirdb({});
 
 if(!db.has("datas")) db.set("datas", [])
 
