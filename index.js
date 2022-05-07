@@ -2,10 +2,7 @@ const path = require("path");
 const express = require("express");
 const hbs = require("express-hbs");
 var app = express();
-
-const Demirdb = require("demirdb");
-
-  const db = new Demirdb({});
+const db = require("quick.db");
 
 if(!db.has("datas")) db.set("datas", [])
 
