@@ -4,7 +4,7 @@ const hbs = require("express-hbs");
 var app = express();
 const db = require("quick.db");
 
-if(!db.has("datas")) db.set("datas", [])
+if(!db.has("datas")) db.set("data", [])
 
 app.use(express.urlencoded());
 
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.get("/data", (req, res) => {
     var data = {
-        datas: (db.get("datas") || [])
+        datas: (db.get("data") || [])
     }
     
     res.render(path.join(__dirname, '/index.hbs'), data)
@@ -24,13 +24,13 @@ app.get("/data", (req, res) => {
 
 app.post("/post", (req, res) => {
 
-    db.push("datas", {
+    db.push("data", {
         ad: req.body.name,
         soyad: req.body.surname
     })
 
 var data = {
-    datas: db.get("datas")
+    datas: db.get("data")
 }
 
 res.render(path.join(__dirname, '/index.hbs'), data)
